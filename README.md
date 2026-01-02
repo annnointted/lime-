@@ -7,7 +7,7 @@
 
 Lime is a minimalist Rust backend framework designed to eliminate boilerplate and complexity when starting new backend services. It provides the essential building blocks for 80% of what 80% of backend services need, with 20% of the code.
 
-## Primary Function
+## Function
 
 Lime solves the excessive boilerplate problem by providing:
 
@@ -171,29 +171,6 @@ environment = "development"
 - Multiple database support (PostgreSQL only)
 - Complex caching layers
 
-## Documentation
-
-- [Getting Started Guide](docs/getting-started.md) (coming soon)
-- [API Reference](docs/api-reference.md) (coming soon)
-- [Deployment Guide](docs/deployment.md) (coming soon)
-- [Migration Path](docs/migration.md) (coming soon)
-
-## Docker Deployment
-
-```dockerfile
-FROM rust:1.70-slim as builder
-RUN apt-get update && apt-get install -y pkg-config libssl-dev
-WORKDIR /usr/src/lime
-COPY . .
-RUN cargo build --release
-
-FROM debian:bullseye-slim
-RUN apt-get update && apt-get install -y ca-certificates libssl1.1
-COPY --from=builder /usr/src/lime/target/release/lime /usr/local/bin/lime
-COPY config.toml /etc/lime/config.toml
-EXPOSE 3000
-CMD ["lime"]
-```
 
 ## Contributing
 
@@ -238,23 +215,6 @@ cargo run --example basic_server
 ## License
 
 Lime is licensed under the **GNU General Public License v3.0**.
-
-```
-Copyright (C) 2024 Lime Contributors
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
-```
 
 ## Success Metrics
 
